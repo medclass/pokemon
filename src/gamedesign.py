@@ -1,5 +1,13 @@
 waza = {"たいあたり":30, "ひっかく":10, "はたく":20, "のしかかり": 50, "みずでっぽう":40, "はねる":0}
 attack = {"1":"たいあたり", "2":"はたく", "3":"はねる", "4":"のしかかり"}
+
+attack_dict = {
+    "1" : {"name" : "たいあたり", "attack" : 30},
+    "2" : {"name" : "はたく", "attack" : 10},
+    "3" : {"name" : "はねる", "attack" : 0},
+    "4" : {"name" : "のしかかり", "attack" : 50}
+}
+
 #attack[1] で技名がわかります
 #waza[attack[1]] で威力がわかります
 
@@ -14,13 +22,13 @@ class pokemon_base:
 
 
 def kougeki(mamori: pokemon_base, waza_num: int):
-  print(attack[waza_num] + " で こうげき した！")
+  # print(attack[waza_num] + " で こうげき した！")
   mamori.set(mamori.hp() - waza[attack[waza_num]])
-  print(mamori.name + " に " + str(waza[attack[waza_num]]) + " のダメージ！")
-  if mamori.hp() < 0:
-    print(mamori.name + " は たおれた！")
-  else:
-    print(mamori.name + " の HP は　" + str(mamori.hp()) + " に なった！")
+  # print(mamori.name + " に " + str(waza[attack[waza_num]]) + " のダメージ！")
+  # if mamori.hp() < 0:
+  #   print(mamori.name + " は たおれた！")
+  # else:
+  #   print(mamori.name + " の HP は　" + str(mamori.hp()) + " に なった！")
 
 
 ##以下サンプルコード、コメントアウトを解除すると動きます。
@@ -34,6 +42,3 @@ def kougeki(mamori: pokemon_base, waza_num: int):
 # > のしかかり で こうげき した！
 # > ぽけもん に 50 のダメージ！
 # > ぽけもん は たおれた！
-
-
-

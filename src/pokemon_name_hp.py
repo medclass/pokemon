@@ -20,15 +20,16 @@ class Pokemon_class:
 #<class 'str'>
 #<class 'int'>
 
+
 pokemon_data = {
-  "6" : {"ja" : "リザードン", "en" : "charizard" ,"hp" : 100},
-  "7" : {"ja" : "ゼニガメ", "en" : "squirtle" ,"hp" : 200},
-  "25" : {"ja" : "ピカチュウ", "en" : "pikachu" ,"hp" : 100},
-  "39" : {"ja" : "プリン", "en" : "jigglypuff" ,"hp" : 300},
-  "54" : {"ja" : "コダック", "en" : "psyduck" ,"hp" : 150},
-  "94" : {"ja" : "ゲンガー", "en" : "gengar" ,"hp" : 200},
-  "104" : {"ja" : "カラカラ", "en" : "cubone" ,"hp" : 200},
-  "133" : {"ja" : "イーブイ", "en" : "eevee" ,"hp" : 150},
-  "149" : {"ja" : "カイリュー", "en" : "dragonite" ,"hp" : 250},
-  "150" : {"ja" : "ミュウツー", "en" : "mewtwo" ,"hp" : 300},
+  "6" : {"ja" : "リザードン", "en" : "charizard", "hp" : 100},
+  "7" : {"ja" : "ゼニガメ", "en" : "squirtle", "hp" : 200},
+  "25" : {"ja" : "ピカチュウ", "en" : "pikachu", "hp" : 100},
+  "39" : {"ja" : "プリン", "en" : "jigglypuff", "hp" : 300},
+  "54" : {"ja" : "コダック", "en" : "psyduck", "hp" : 150},
+  "94" : {"ja" : "ゲンガー", "en" : "gengar", "hp" : 200},
+  "104" : {"ja" : "カラカラ", "en" : "cubone", "hp" : 200},
+  "133" : {"ja" : "イーブイ", "en" : "eevee", "hp" : 150},
+  "149" : {"ja" : "カイリュー", "en" : "dragonite", "hp" : 250},
+  "150" : {"ja" : "ミュウツー", "en" : "mewtwo", "hp" : 300},
 }

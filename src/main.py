@@ -1,6 +1,6 @@
 import random
 
-from gamedesign import attack, kougeki, pokemon_base
+from gamedesign import attack_dict, kougeki, pokemon_base
 from pokemon_name_hp import pokemon_data
 
 # pokemonname = ["フシギダネ", "ヒトカゲ", "ゼニガメ", "バクフーン", "カメックス"]
@@ -26,14 +26,14 @@ from pokemon_name_hp import pokemon_data
 #   self.hitpoint = a
 
 
-# def kougeki(mamori: pokemon_base, waza_num: int):
+# def kougeki(teki: pokemon_base, waza_num: int):
 #   print(attack[waza_num] + " で こうげき した！")
-#   mamori.set(mamori.hp() - waza[attack[waza_num]])
-#   print(mamori.name + " に " + str(waza[attack[waza_num]]) + " のダメージ！")
-#   if mamori.hp() < 0:
-#     print(mamori.name + " は たおれた！")
+#   teki.set(teki.hp() - waza[attack[waza_num]])
+#   print(teki.name + " に " + str(waza[attack[waza_num]]) + " のダメージ！")
+#   if teki.hp() < 0:
+#     print(teki.name + " は たおれた！")
 #   else:
-#     print(mamori.name + " の HP は　" + str(mamori.hp()) + " に なった！")
+#     print(teki.name + " の HP は　" + str(teki.hp()) + " に なった！")
 
 
 ##以下サンプルコード、コメントアウトを解除すると動きます。
@@ -51,7 +51,7 @@ from pokemon_name_hp import pokemon_data
 
 lang = ""
 while lang not in ["ja", "en"]:
-    lang = input("言語モードの選択 / Select Language Mode : [ja/en]")
+    lang = input("言語モードの選択 / Select Language Mode : [ja/en] : ")
 
 print({"en" : "let's battle", "ja" : "バトル開始！"}[lang])
 print({"en" : "Choise Your Pokemon!", "ja" : "ポケモンを選んでね"}[lang])
@@ -73,8 +73,8 @@ teki = pokemon_base(hp=pokemon_data[tekinum]["hp"], name=pokemon_data[tekinum][l
 
 while True:
     print("==========================================")
-    print(attack)
-    a = input({"en" : "which move：", "ja" : "どの攻撃をしますか？："}[lang])
+    [print(f"{k} : {v['name']}") for k, v in attack_dict.items()]
+    a = input({"en" : "which move : ", "ja" : "どの攻撃をしますか？："}[lang])
     print("   ---   ")
 
     if a == "e":
@@ -82,14 +82,49 @@ while True:
         break
 
     elif a == "その他":
-        print("技一覧", attack.items())
+        print("技一覧", attack_dict.items())
 
-    elif a in attack.keys():
+    elif a in attack_dict.keys():
+        # 味方のターン
         kougeki(teki,a)
+
+        if (lang == "ja"):
+            print(f"{mikata.name} は {attack_dict[a]['name']} で こうげき した！")
+            print(f"あいての {teki.name} に {attack_dict[a]['attack']} のダメージ！")
+        elif (lang == "en"):
+            print(f"{mikata.name} used {attack_dict[a]['name']}！")
+            print(f"Rival's {teki.name} take {attack_dict[a]['attack']} damaged！")
+
         if teki.hp() <= 0:
+            print({"en" : f"Rival's {teki.name} fainted!", "ja" : f"あいての {teki.name} は たおれた！"}[lang])
             print({"en" : "You win!", "ja" : "あなたの勝利"}[lang])
             break
-        kougeki(mikata,str(random.choice(list(attack.keys()))))
+        else:
+            print({
+                "en" : f"Rival's {teki.name} has {teki.hp()} HP！",
+                "ja" : f"{teki.name} の HP は {teki.hp()} に なった！"
+            }[lang]
+            )
+
+        # 敵のターン
+        print()
+        teki_attack_num = random.choice(list(attack_dict.keys()))
+        kougeki(mikata, teki_attack_num)
+
+        if (lang == "ja"):
+            print(f"あいての {teki.name} は {attack_dict[teki_attack_num]['name']} で こうげき した！")
+            print(f"{mikata.name} に {attack_dict[teki_attack_num]['attack']} のダメージ！")
+        elif (lang == "en"):
+            print(f"Rival's {mikata.name} used {attack_dict[teki_attack_num]['name']}！")
+            print(f"Your {teki.name} take {attack_dict[teki_attack_num]['attack']} damaged！")
+
         if mikata.hp() <= 0:
+            print({"en" : f"{mikata.name} fainted!", "ja" : f"{mikata.name} は たおれた！"}[lang])
             print({"en" : "You lose!", "ja" : "あなたの敗北"}[lang])
             break
+        else:
+            print({
+                "en" : f"Your {mikata.name} has {teki.hp()} HP！",
+                "ja" : f"{mikata.name} の HP は {teki.hp()} に なった！"
+            }[lang]
+            )
