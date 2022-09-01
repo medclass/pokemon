@@ -1,17 +1,16 @@
 waza = {"たいあたり":30, "ひっかく":10, "はたく":20, "のしかかり": 50, "みずでっぽう":40, "はねる":0}
-attack = {1:"たいあたり", 2:"はたく", 3:"はねる", 4:"のしかかり"}
+attack = {"1":"たいあたり", "2":"はたく", "3":"はねる", "4":"のしかかり"}
 #attack[1] で技名がわかります
 #waza[attack[1]] で威力がわかります
 
 class pokemon_base:
- name = "ぽけもん"
- hitpoint = 0
- def __init__(self,a):#hpの初期化
-  self.hitpoint = a
+ def __init__(self, hp, name):#hpの初期化
+  self.hitpoint = hp
+  self.name = name
  def hp(self):#hpを返す
   return self.hitpoint
- def set(self,a):#hpをセットする
-  self.hitpoint = a
+ def set(self,hp):#hpをセットする
+  self.hitpoint = hp
 
 
 def kougeki(mamori: pokemon_base, waza_num: int):
