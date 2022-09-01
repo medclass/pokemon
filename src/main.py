@@ -102,7 +102,7 @@ while True:
         else:
             print({
                 "en" : f"Rival's {teki.name} has {teki.hp()} HP！",
-                "ja" : f"{teki.name} の HP は {teki.hp()} に なった！"
+                "ja" : f"あいての {teki.name} の HP は {teki.hp()} に なった！"
             }[lang]
             )
 
@@ -124,7 +124,7 @@ while True:
             break
         else:
             print({
-                "en" : f"Your {mikata.name} has {teki.hp()} HP！",
-                "ja" : f"{mikata.name} の HP は {teki.hp()} に なった！"
+                "en" : f"Your {mikata.name} has {mikata.hp()} HP！",
+                "ja" : f"{mikata.name} の HP は {mikata.hp()} に なった！"
             }[lang]
             )
